@@ -16,3 +16,12 @@
 | Treść opinii | content | div.user-post\_\_text |
 | Listę wad | cons | div.review-feature\_\_title—negatives ~ div.review-feature\_\_item |
 | Listę zalet | pros | div.review-feature\_\_title—positives ~ div.review-feature\_\_item |
+
+## Wykorzystane biblioteki
+    -Requests
+    -BeautifulSoup
+    -Os
+    -Json
+    -Pandas
+    -Matplotlib
+    -numpy
