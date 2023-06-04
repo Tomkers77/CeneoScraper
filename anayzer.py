@@ -19,6 +19,22 @@ print(f"""Dla produktu o kodzie {product_code} pobranych zostało {stats["opinio
 Dla {stats["pros_count"]} opinii podana została lista zalet produktu, a dla {stats["cons_count"]} opinii podana została lista jego wad. 
 Średnia ocena produktu wynosi {stats["average_score"]:.2f}.""")
 
+if not os.path.exists("./plots"):
+    os.mkdir("./plots")
+
 stars = opinions.score.value_counts().reindex(list(np.arange(0,5.5,0.5)), fill_value = 0)
 stars.plot.bar()
+plt.savefig(f"./plots/{product_code}_bar-stars.png")
 plt.show()
+
+recommendations = opinions.recommendation.value_counts(dropna=False)
+print(recommendations)
+recommendations.plot.pie(
+    label="",
+    labels = ["Recommended", "Not-recommended", "Neutral"],
+    colors = ["green", "red","yellow"],
+    autopct="%1.1f%%",
+)
+plt.title("Recommendations")
+plt.savefig(f"./plots/{product_code}_pie.png")
+plt.close()
